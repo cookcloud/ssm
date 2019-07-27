@@ -44,7 +44,7 @@
             <version>1.1.10</version>
         </dependency>
 
-        <!--mybatis-->
+        <!--mapper-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -66,7 +66,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.25</version>
-            <scope>test</scope>
+            <scope>compile</scope>  <!--这里原来是test：但是运行tomcat提示无法加载类，所以改成compile-->
         </dependency>
         <dependency>
             <groupId>org.mybatis.caches</groupId>
@@ -151,6 +151,25 @@
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
+        </dependency>
+        <!-- lombok使用-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.6</version>
+            <scope>compile</scope>  <!--这里原始是test，这里改成了compile-->
+        </dependency>
+
+        <!--jsp需要使用的jstl标签-->
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-spec</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-impl</artifactId>
+            <version>1.2.5</version>
         </dependency>
 
     </dependencies>

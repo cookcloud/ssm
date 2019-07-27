@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mapper.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hy.mapper.EmployeeMapper">
+    <cache type="org.mapper.caches.ehcache.EhcacheCache"></cache>
+
+    <!--type=""：指定自定义缓存的全类名； 实现Cache接口即可；-->
+
+    <select id="getEmployeeById" parameterType="Integer" resultType="com.hy.bean.Employee" databaseId="mysql">
+        select id,last_name,email,gender from employee where id = #{id}
+    </select>
+
+
+    <select id="getEmps" resultType="com.hy.bean.Employee">
+        select * from employee
+    </select>
+</mapper>
