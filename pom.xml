@@ -157,7 +157,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.6</version>
-            <scope>compile</scope>  <!--这里原始是test，这里改成了compile-->
+            <scope>provided</scope>
         </dependency>
 
         <!--jsp需要使用的jstl标签-->

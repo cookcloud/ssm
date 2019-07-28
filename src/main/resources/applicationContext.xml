@@ -43,18 +43,18 @@
         <!-- configLocation指定全局配置文件的位置 -->
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
         <!--mapperLocations: 指定mapper文件的位置-->
-        <property name="mapperLocations" value="classpath:*.xml"></property>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
     </bean>
 
     <!-- 扫描所有的mapper接口的实现，让这些mapper能够自动注入；
         base-package：指定mapper接口的包名
      -->
-    <mybatis-spring:scan base-package="com.hy.mapper"/>
+    <!--<mybatis-spring:scan base-package="com.hy.mapper"/>-->
 
     <!--以下是老版的mapper接口自动注入配置，建议用上面新版的-->
-    <!-- <bean class="org.mapper.spring.com.hy.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.atguigu.mapper.dao"></property>
-    </bean> -->
-
+     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.hy.mapper"></property>
+         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
 
 </beans>
