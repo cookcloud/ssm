@@ -19,25 +19,4 @@ public class JavaTest {
         return new SqlSessionFactoryBuilder().build(inputStream);
 
     }
-
-
-    @Test
-    public void test1() throws IOException {
-        SqlSessionFactory sessionFactory = JavaTest.getSqlSeesionFactory();
-        SqlSession session = sessionFactory.openSession();
-
-        try {
-            DepartMapper mapper = session.getMapper(DepartMapper.class);
-            List<Depart> departList = mapper.selectAll();
-            for (Depart depart : departList) {
-                System.out.println(depart.getDepartname());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-    }
-
-
 }
