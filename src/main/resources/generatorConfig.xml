@@ -34,18 +34,18 @@
                 targetProject="\MBGTestProject\src"：目标工程   指定在该项目下所在的路径
         -->
         <!-- enableSubPackages:是否让schema作为包的后缀 -->
-        <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+        <!-- 是否允许子包，即targetPackage.schemaName.tableName    生成pojo -->
         <javaModelGenerator targetPackage="com.hy.bean" targetProject=".\src\main\java">
             <property name="enableSubPackages" value="false"/>
             <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-        <!-- sqlMapGenerator：sql映射生成策略： -->
-        <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resource">
+        <!-- sqlMapGenerator：sql映射生成策略：   生成mapper.xml文件 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
-        <!-- javaClientGenerator:指定mapper接口所在的位置 -->
+        <!-- javaClientGenerator:指定mapper接口所在的位置  生成dao(mapper)接口-->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.hy.mapper" targetProject=".\src\main\java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
@@ -67,7 +67,7 @@
                JDBC      :相当于在生成的insert元素上添加useGeneratedKeys="true"和keyProperty属性
        <generatedKey column="" sqlStatement=""/>
         -->
-        <table tableName="employee" domainObjectName="Employee"
+        <table tableName="depart" domainObjectName="Depart"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
