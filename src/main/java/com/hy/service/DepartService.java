@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface DepartService {
     public List<Depart> getDepart();
+
+    public List<Depart> getDepartListByParameter(int pageNum, int pageSize);
 }
