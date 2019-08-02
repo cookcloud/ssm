@@ -53,7 +53,9 @@ public class DepartServiceImp implements DepartService {
         DepartMapper mapper = sqlSession.getMapper(DepartMapper.class);
         Depart departTemp=null;
         List<Depart> departList=null;
-
+        //批量：（预编译sql一次==>设置参数===>10000次===>执行（1次））
+        //Parameters: 616c1(String), b(String), 1(String)==>4598
+        //非批量：（预编译sql=设置参数=执行）==》10000    10200 即：插入一条数据，执行一条sql语句
         try {
             for (int i=0;i<10;i++) {
                 departTemp = new Depart("cmcc"+ UUID.randomUUID().toString().substring(0,4));

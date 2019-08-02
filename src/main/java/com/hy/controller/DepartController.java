@@ -38,7 +38,7 @@ public class DepartController {
 
 
     //批量插入数据测
-    @RequestMapping()
+    @RequestMapping("/batchInsertDepart")
     @ResponseBody
     public List<Depart> batchInsertDepart() {
         List<Depart> departList = departService.batchInsertDepart();
