@@ -30,10 +30,18 @@ public class DepartController {
 
     @RequestMapping("/getDepartListByParameter")
     @ResponseBody
-    public List<Depart> getDepartListByParameter(int pageNum, int pageSize){
+    public List<Depart> getDepartListByParameter(int pageNum, int pageSize) {
 
-        List<Depart>  departList= departService.getDepartListByParameter(pageNum,pageSize);
+        List<Depart> departList = departService.getDepartListByParameter(pageNum, pageSize);
         return departList;
     }
 
+
+    //批量插入数据测
+    @RequestMapping()
+    @ResponseBody
+    public List<Depart> batchInsertDepart() {
+        List<Depart> departList = departService.batchInsertDepart();
+        return departList;
+    }
 }

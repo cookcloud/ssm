@@ -7,10 +7,13 @@ import com.github.pagehelper.PageInfo;
 import com.hy.bean.Depart;
 import com.hy.mapper.DepartMapper;
 import com.hy.service.DepartService;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class DepartServiceImp implements DepartService {
@@ -37,6 +40,31 @@ public class DepartServiceImp implements DepartService {
         PageInfo<Depart> pageInfo = new PageInfo<>(departList);
         System.out.println(pageInfo.getPageNum());
         System.out.println(pageInfo.getSize());
+        return departList;
+    }
+
+    //批量插入结果
+    @Autowired
+    private SqlSession sqlSession;
+
+    @Override
+    public List<Depart> batchInsertDepart() {
+
+        DepartMapper mapper = sqlSession.getMapper(DepartMapper.class);
+        Depart departTemp=null;
+        List<Depart> departList=null;
+
+        try {
+            for (int i=0;i<10;i++) {
+                departTemp = new Depart("cmcc"+ UUID.randomUUID().toString().substring(0,4));
+                mapper.insert(departTemp);
+                departList.add(departTemp);
+            }
+            sqlSession.commit();
+        } finally {
+            sqlSession.close();
+        }
+
         return departList;
     }
 

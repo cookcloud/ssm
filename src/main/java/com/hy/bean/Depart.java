@@ -1,23 +1,18 @@
 package com.hy.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Depart {
     private Integer id;
-
     private String departname;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDepartname() {
-        return departname;
-    }
-
-    public void setDepartname(String departname) {
-        this.departname = departname == null ? null : departname.trim();
+    public Depart(String departname) {
+        this.departname = departname;
     }
 }
