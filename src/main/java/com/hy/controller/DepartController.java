@@ -2,6 +2,7 @@ package com.hy.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hy.bean.Depart;
+import com.hy.bean.EnumDepartStatus;
 import com.hy.service.DepartService;
 import net.sf.jsqlparser.expression.JsonExpression;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,18 @@ public class DepartController {
     //批量插入数据测
     @RequestMapping("/batchInsertDepart")
     @ResponseBody
-    public List<Depart> batchInsertDepart() {
-        List<Depart> departList = departService.batchInsertDepart();
-        return departList;
+    public List<Integer>  batchInsertDepart() {
+        List<Integer>  departPrimaryKyes = departService.batchInsertDepart();
+        return departPrimaryKyes;
+    }
+
+    //测试自定义的枚举类型，当字段为自定义的枚举类型时使用自定义的typehandler
+    @RequestMapping("/insertDepartEnumDepartStatus")
+    @ResponseBody
+    public EnumDepartStatus insertDepartEnumDepartStatus() {
+        EnumDepartStatus enumDepartStatus = departService.insertDepartEnumDepartStatus();
+        System.out.println("枚举对象的code==>"+enumDepartStatus.getCode());
+        System.out.println("枚举对象的msg==>"+enumDepartStatus.getMsg());
+        return enumDepartStatus;
     }
 }

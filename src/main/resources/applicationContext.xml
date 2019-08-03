@@ -60,7 +60,7 @@
         </property>
     </bean>
 
-    <!--配置一个可以进行批量执行的sqlSession  -->
+    <!--配置一个可以进行批量执行的sqlSession  SqlSession的关闭无需程序员手动关闭，Spring会自动关闭-->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
         <constructor-arg name="executorType" value="BATCH"></constructor-arg>

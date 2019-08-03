@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.hy.bean.Depart">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="departname" jdbcType="VARCHAR" property="departname" />
+    <result column="departstatus" jdbcType="VARCHAR" property="departstatus" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from depart
@@ -16,13 +17,25 @@
     insert into depart (departname)
     values (#{departname,jdbcType=VARCHAR})
   </insert>
+
+  <insert id="insert2" useGeneratedKeys="true" keyProperty="id">
+    insert into depart (departname)
+    values (#{departname,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insert3" useGeneratedKeys="true" keyProperty="id">
+    insert into depart (departname,departstatus)
+    values (#{departname,jdbcType=VARCHAR},#{departstatus,jdbcType=VARCHAR})
+  </insert>
+
+
   <update id="updateByPrimaryKey" parameterType="com.hy.bean.Depart">
     update depart
     set departname = #{departname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, departname
+    select id, departname, departstatus
     from depart
     where id = #{id,jdbcType=INTEGER}
   </select>

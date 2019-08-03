@@ -11,6 +11,10 @@ public interface DepartMapper {
 
     int insert(Depart record);
 
+    public void insert2(Depart depart);
+
+    public void insert3(Depart depart);
+
     Depart selectByPrimaryKey(Integer id);
 
     List<Depart> selectAll();
