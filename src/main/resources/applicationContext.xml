@@ -9,8 +9,11 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-    <!-- Spring希望管理所有的业务逻辑组件，等。。。 -->
-    <context:component-scan base-package="com.hy">
+    <!-- Spring希望管理所有的业务逻辑组件，等... 指定springIOC容器中扫描的包 -->
+    <!-- 其中也可以通过resource-pattern 指定扫描的资源,这个是指扫描指定的包路径
+         而exclude-filter与include-filter 是指包含或者排除那些特定的目标类，这里是类名，例如下面是根据注解排除Controller类，还有就是assignable，表示根据类名进行排除或指定相关的类
+    -->
+    <context:component-scan base-package="com.hy" >
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>

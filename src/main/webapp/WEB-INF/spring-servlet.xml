@@ -9,6 +9,7 @@
 
     <!--SpringMVC只是控制网站跳转逻辑  -->
     <!-- 只扫描控制器 -->
+    <!-- 其中include-filter 需要配合use-default-filters使用，说明只扫描指定的包，需要将use-default-filters设置为false -->
     <context:component-scan base-package="com.hy" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
