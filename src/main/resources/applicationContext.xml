@@ -27,12 +27,12 @@
         <property name="username" value="${jdbc.username}"></property>
         <property name="password" value="${jdbc.password}"></property>
     </bean>
-    <!-- spring事务管理 管理jdbc数据源的事务，需要加入数据源引用-->
+    <!-- 配置spring事务管理 管理jdbc数据源的事务，需要加入数据源引用-->
     <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
 
-    <!-- 开启基于注解的事务 -->
+    <!-- 开启基于注解的事务 即启动spring事务注解-->
     <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
 
     <!--
