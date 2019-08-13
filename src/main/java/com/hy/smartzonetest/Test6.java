@@ -17,18 +17,18 @@ package com.hy.smartzonetest;
 /**
  * @author liudongwei
  * @version V
- * @Type Test1
+ * @Type Test6
  * @Desc
- * @date 2019年08月12日 9:41
+ * @date 2019年08月12日 11:44
  */
-public class Test1 {
-
-    //
+public class Test6 {
     public static void main(String[] args) {
-        System.out.println("xing zeng ");
-
-        System.out.println("从仓库落下来");
-
+        System.out.println("6666");
+        System.out.println("6666更改了");
+        int a=99;
     }
-
+    public  static void show() {
+         int b=90;
+        System.out.println(b);
+    }
 }

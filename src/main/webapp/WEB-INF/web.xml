@@ -2,13 +2,18 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
     <display-name>MyBatis_06_ssm</display-name>
 
-    <!--Spring配置： needed for ContextLoaderListener -->
+    <!--Spring配置： needed for ContextLoaderListener
+    如果在web.xml中不写任何参数配置信息，默认的路径是"/WEB-INF/applicationContext.xml，这里通过contextConfigLocation进行指定位置
+    -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
     <!-- Bootstraps the root web application context before servlet initialization -->
+    <!--
+    配置监听器作用：ContextLoaderListener的作用就是启动Web容器时，自动装配ApplicationContext的配置信息。因为它实现了ServletContextListener这个接口，在web.xml配置这个监听器，启动容器时，就会默认执行它实现的方法。
+    -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -26,7 +31,8 @@
     <servlet-mapping>
         <!--
            第一种：*.action或*.do等，请求以.action或.do结尾 的由前端控制器解析
-           第二种：/，所有的请求全部由前端控制器解析，会把所有的包括静态资源 （css、html、js）也解析，前端控制器无法解析静态资源，特殊处理静态资源访问不通过前端控制器解析
+           第二种：/，所有的请求全部由前端控制器解析，会把所有的包括静态资源 （css、html、js）也解析，前端控制器无法解析静态资源，特殊处理静态资源访问不通过前端控制器解析，
+           拦截了所有的请求，那么同时对*.js,*.jpg等静态文件的访问也就被拦截了，即会导致静态文件（jpg,js,css）被拦截后不能正常显示。
            第三种：/*，此方法存在问题，请求需要最终转发到jsp，此方法前端控制器把转发的jsp也解析了，前端控制器无法解析jsp的，所以此方法不能使用。
         -->
         <servlet-name>spring</servlet-name>
@@ -35,3 +41,7 @@
     </servlet-mapping>
 
 </web-app>
+
+<!--
+这里关于web.xml配置可以参考博客：https://www.cnblogs.com/wkrbky/p/5929943.html
+-->
