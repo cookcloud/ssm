@@ -14,6 +14,10 @@
 
 package com.hy.smartzonetest;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author liudongwei
  * @version V
@@ -23,12 +27,49 @@ package com.hy.smartzonetest;
  */
 public class Test6 {
     public static void main(String[] args) {
-        System.out.println("6666");
-        System.out.println("6666更改了");
-        int a=99;
+
+
+        String str = "abc";
+        boolean empty = str.isEmpty();
+        List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+
+        long count = integers.stream().filter(i -> juge(i,5)).count();
+        System.out.println("设置的过滤条件后的个数==>" + count);
+
+        /*List<Integer> list = integers.stream().filter(i -> juge(i, 5)).collect(Collectors.toList());
+        printList(list);*/
+
+        List<Integer> list1 = integers.stream().filter(i -> juge(i, 5)).map(i -> handle(i)).collect(Collectors.toList());
+        printList(list1);
+
+       /* List<String> list2 = integers.stream().filter(i -> juge(i, 5)).map(i -> handle2()).collect(Collectors.toList());
+        printList(list2);*/
+
+
     }
-    public  static void show() {
-         int b=90;
-        System.out.println(b);
+
+    private static int  handle(Integer i) {
+        i = 3 * i;
+        return i;
     }
+
+    public static String handle2() {
+        return "bb";
+    }
+
+
+    private static <T> void printList(List<T> list) {
+        for (T t:list){
+            System.out.println("元素索引==>"+list.indexOf(t));
+            System.out.println("每一个元素===>"+t);
+        }
+    }
+
+    public  static boolean juge(Integer a,Integer threshold) {
+        if (a>threshold) {
+            return true;
+        }
+        return false;
+    }
+
 }

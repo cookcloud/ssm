@@ -14,6 +14,12 @@
 
 package com.hy.smartzonetest;
 
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
+
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author liudongwei
  * @version V
@@ -24,5 +30,24 @@ package com.hy.smartzonetest;
 public class Test5 {
     public static void main(String[] args) {
         System.out.println("xinajin55");
+
+        String str = "niaho ";
+        String str1 = "kk";
+
+
+        List<String> strings = Arrays.asList(str, str1);
+        List<String> strings2 = Arrays.asList(str);
+
+        boolean result = StringUtils.isEmpty(str);
+        System.out.println(result);
+
+
+        String[] strs = new String[] {
+            str
+        };
+
+        boolean empty = ObjectUtils.isEmpty(strs);
+        System.out.println(empty
+        );
     }
 }
