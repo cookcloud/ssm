@@ -20,6 +20,10 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
     <!--springmvc的高级功能开启，即可以定制配置组件（视图解析器、视图映射器、静态资源映射、拦截器......）-->
+    <!-- 直接<mvc:annotation-driven />，这是应用默认配置方案，例如默认是用jackson，但是自己可以在里面进行更改。
+    <mvc:annotation-driven /> 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,
+        是spring MVC为@Controllers分发请求所必须的。
+     -->
     <mvc:annotation-driven>
         <!--不使用默认消息转换器   springmvc默认使用jackson，需要导入jackson相关jar才可以使用@ResponseBody等标签，这里改用fastJson整合springmvc-->
         <mvc:message-converters register-defaults="false">
