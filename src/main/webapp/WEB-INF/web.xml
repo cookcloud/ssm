@@ -32,6 +32,10 @@
         <servlet-name>springDispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!--   如果不配置contextConfigLocation，默认加载/WEB-INF/servlet名称+"-serlvet.xml"即：springmvc-serlvet.xml-->
+        <!--
+         <url-pattern>/</url-pattern>  不会匹配到*.jsp，不会进入spring的DispatcherServlet类
+         <url-pattern>/*</url-pattern> 会匹配*.jsp，导致进入spring的DispatcherServlet类，然后去寻找controller，接着找不到对应的controller所以报错。
+        -->
         <load-on-startup>1</load-on-startup>
     </servlet>
 
